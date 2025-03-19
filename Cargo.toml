@@ -1,0 +1,15 @@
+[package]
+name = "pbcopy-pbpaste"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.97"
+copypasta = "0.10.1"
+
+[profile.release]
+opt-level = "z"   # Optimize for size ("s" is also common)
+lto = true        # Enable Link Time Optimization
+debug = false     # Remove debug symbols
+panic = "abort"   # Use abort instead of unwinding to reduce binary size
+codegen-units = 1 # Fewer units allow for more optimizations
